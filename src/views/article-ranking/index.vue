@@ -61,9 +61,9 @@
 <script setup>
 import { onMounted, ref, onActivated } from "vue";
 import { getArticleList, deleteArticle } from "../../api/article";
-import { dynamicData, selectDynamicColumn, tableColumns } from "./dynamic/index.js";
+import { dynamicData, selectDynamicColumn, tableColumns } from "./dynamic/index";
 import { getAutoHeight } from "../../hooks/getAutoHeight";
-import { tableRef, initSortable } from "./sortable/index.js";
+import { tableRef, initSortable } from "./sortable/index";
 import ArticleDetail from "./components/ArticleDetail.vue";
 import { formatTime } from "../../utils/formatTime";
 import { ElMessage } from "element-plus";

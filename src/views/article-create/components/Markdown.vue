@@ -13,7 +13,7 @@ import MKEditor from "@toast-ui/editor";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import "@toast-ui/editor/dist/i18n/zh-cn";
 
-import { nextTick, onMounted, ref, watch } from "vue";
+import { nextTick, onMounted, ref, watch,defineProps } from "vue";
 import { ElMessage } from "element-plus";
 const emit = defineEmits(["success", "resetIsClear"]);
 const props = defineProps(["isClear"]);

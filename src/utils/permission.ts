@@ -15,7 +15,7 @@ router.beforeEach(async (to, from, next) => {
                 type: 'error',
                 grouping: true,
             })
-            return next('/profile')
+            return next('/')
         }
         next()//其他情况白名随便访问
     } else {

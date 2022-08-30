@@ -7,12 +7,12 @@
       <div class="box-center">
         <img
           :src="
-            $store.getters.userInfo.photo || require('../assets/img/default.jpg')
+            $store.getters.userInfo.photo || getImg('default.jpg')
           "
           class="avatar"
         />
         <div class="user-name">
-          {{ $store.getters.userInfo.username }}
+          {{ $store.getters.userInfo.user }}
         </div>
         <div class="user-role text-muted">
           {{ $store.getters.userInfo.admin ? "管理员" : "普通用户" }}
@@ -48,6 +48,10 @@
   </el-card>
 </template>
 <script setup>
+import {defineProps} from "vue";
+
+import {getImg} from "../../../utils/pub-use";
+
 
 defineProps({
   featureData: {

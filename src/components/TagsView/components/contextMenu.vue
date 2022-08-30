@@ -9,7 +9,7 @@
 <script setup>
 import { useStore } from "vuex";
 import { useRouter, useRoute } from "vue-router";
-import {computed} from "vue";
+import {computed,defineProps} from "vue";
 const router = useRouter();
 const route = useRoute();
 

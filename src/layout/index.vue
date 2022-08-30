@@ -20,7 +20,7 @@ import Navbar from "./components/Navbar.vue";
 import TagsView from "../components/TagsView/index.vue";
 import {useStore} from "vuex";
 import {computed, onBeforeMount} from "vue";
-import {checkAdmin} from "@/api/login";
+import {checkAdmin} from "../api/login";
 import {ElMessage} from "element-plus";
 import {useRouter} from "vue-router";
 const router=useRouter()

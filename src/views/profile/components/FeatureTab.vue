@@ -18,7 +18,7 @@
           <div class="header">
             <img
               :src="
-                $store.getters.userInfo.photo || require('../../../assets/img/default.jpg')
+                $store.getters.userInfo.photo || getImg('default.jpg')
               "
               class="avatar"
             />
@@ -39,7 +39,8 @@
   </el-card>
 </template>
 <script setup>
-import { ref} from "vue";
+import { ref,defineProps} from "vue";
+import {getImg} from "../../../utils/pub-use";
 
 defineProps({
   featureData: {

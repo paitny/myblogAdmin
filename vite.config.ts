@@ -14,7 +14,7 @@ base:"./",
 
     proxy: {
       // 选项写法
-      '/adminServer':"http://localhost:4000/"
+      '/':"http://localhost:4000"
     },
 
   },

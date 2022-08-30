@@ -10,7 +10,7 @@
 </template>
 <script setup>
 import { useRouter } from "vue-router";
-import {reactive, ref} from "vue";
+import {reactive, ref,defineProps} from "vue";
 const router = useRouter();
 
 const props =  defineProps({
