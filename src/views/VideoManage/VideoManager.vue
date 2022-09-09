@@ -75,7 +75,7 @@
                 :with-credentials="true"
                 :show-file-list="false"
             >
-              <el-button size="large" type="warning">重传封面</el-button>
+              <el-button size="large" type="warning" >重传封面</el-button>
             </el-upload>
           </div>
 

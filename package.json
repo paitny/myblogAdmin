@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3",
+    "aplayer": "^1.10.1",
     "driver.js": "^0.9.8",
     "fuse.js": "^6.6.2",
     "particles.vue3": "^2.2.4",

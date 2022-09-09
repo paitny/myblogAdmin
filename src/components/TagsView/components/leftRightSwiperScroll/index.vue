@@ -2,7 +2,7 @@
   <!-- 文本超出，左右按钮滚动 -->
   <div ref="swiperScroll" class="left-right-swiper-scroll-box">
     <!-- 左边按钮 -->
-    <div v-show="showLeftIcon" @click="handleLeftClick" class="scroll-icon left-icon">
+    <div @click="handleLeftClick" class="scroll-icon left-icon">
       <svg-icon icon="left"></svg-icon>
     </div>
     <!-- 中间滚动区域 -->
@@ -10,7 +10,7 @@
       <slot></slot>
     </div>
     <!-- 右边按钮 -->
-    <div v-show="showRightIcon" @click="handleRightClick" class="scroll-icon right-icon">
+    <div @click="handleRightClick" class="scroll-icon right-icon">
       <svg-icon icon="right"></svg-icon>
     </div>
   </div>
@@ -114,18 +114,18 @@ export default {
 <style lang='scss' scoped>
 .left-right-swiper-scroll-box {
   position: relative;
-  width: 90%;
+  width: 95%;
   overflow: hidden;
   transition: all 0.3s;
   margin: 0 auto;
   .scroll-icon {
     position: absolute;
     top: 0;
-    width: 70px;
-    height: 34px;
+    height: 36px;
     z-index: 9;
     cursor: pointer;
     background-image: linear-gradient(270deg, invalid gradient);
+    line-height: 24px;
     i {
       position: absolute;
       top: 5px;
@@ -135,10 +135,16 @@ export default {
     &.left-icon {
       left: 0;
       background: #fff;
+      border-right: 2px solid #d8dce5;
+      box-shadow: 0 1px 3px #0000001f, 0 0 3px #0000000a;
+
     }
     &.right-icon {
       right: 0;
       background: #fff;
+      border-left: 2px solid #d8dce5;
+      box-shadow: 0 1px 3px #0000001f, 0 0 3px #0000000a;
+
     }
   }
   .swiper-scroll-content {

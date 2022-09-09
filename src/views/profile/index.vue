@@ -8,7 +8,9 @@
         <FeatureTab :featureData="featureData"></FeatureTab>
       </el-col>
     </el-row>
+
   </div>
+
 </template>
 
 <script setup>

@@ -2,7 +2,7 @@
   <div class="">
     <CountDown
         msg="您访问的页面不存在"
-        :isLogin="!!$store.getters.userInfo.username"
+        :isLogin="!!$store.getters.userInfo.user"
     >
       <el-icon><WarningFilled /></el-icon>
     </CountDown>

@@ -2,7 +2,7 @@
   <div class="">
     <CountDown
         msg="您没有权限访问"
-        :isLogin="!!$store.getters.userInfo.username"
+        :isLogin="!!$store.getters.userInfo.user"
     >
       <el-icon><Warning /></el-icon>
     </CountDown>

@@ -4,7 +4,9 @@ import mv from './moudles/mv'
 import articleManage from './moudles/article'
 import swiper from "./moudles/swiper";
 import artAdmin from "./moudles/artAdmin";
+import music from "./moudles/music";
 const routes = [
+
     {
         path: "/",
         component: () => import("../layout/index.vue"),
@@ -82,8 +84,8 @@ const routes = [
     linkMg,
     swiper,
     mv,
-    artAdmin
-
+    artAdmin,
+    music
 
 
 ]

@@ -1,19 +1,28 @@
 <!-- layout的根组件  -->
 <template>
+  <Music></Music>
+
   <div class="app-wrapper" :class="open">
+
     <!-- 左侧menu -->
     <Sidebar class="sidebar-container"></Sidebar>
     <div class="main-container">
+
       <div class="fixed-header">
         <Navbar></Navbar>
         <TagsView></TagsView>
+
       </div>
       <!-- 主要内容区  -->
-      <Appmain></Appmain>
+      <Appmain>
+      </Appmain>
+
     </div>
   </div>
+
 </template>
 <script setup>
+import Music from "../components/Music/index.vue";
 import Sidebar from "./components/Sidebar/index.vue";
 import Appmain from "./components/Appmain.vue";
 import Navbar from "./components/Navbar.vue";
@@ -77,7 +86,6 @@ checkAdmin().then(async ({data})=>{
   .sidebar-container {
     overflow: hidden;
     position: fixed;
-    z-index: 1001;
     width: $sideBarWidth;
     height: 100%;
     top: 0;

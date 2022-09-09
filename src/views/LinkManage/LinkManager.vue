@@ -44,7 +44,7 @@
       >
         <template #default="scope">
           <div style="display: flex;width: 50%;height: 50% ;justify-content: space-between;margin: 0 auto">
-            <el-button type="primary" @click="update(scope.row)" size="large">修改</el-button>
+            <el-button type="primary" @click="update(scope.row)" size="large" >修改</el-button>
             <el-button type="danger" @click="deleteLink(scope.row)" size="large">删除</el-button>
           </div>
 
