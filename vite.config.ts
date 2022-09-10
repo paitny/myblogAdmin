@@ -11,16 +11,20 @@ const pathResolve = (pathStr) => {
 export default defineConfig({
 base:"./",
 
-  server:{
-    port:4000
-    // proxy: {
-    //   '/#/': {
-    //     target: 'http://localhost:4000/',
+  server: {
+    port: 3000,
+    open: true,
+    // 设置代理
+    // proxy:{
+    //   '/api':{
+    //     target:'http://localhost:4000/',
     //     changeOrigin: true,
-    //     rewrite: (path) => path.replace(/^\/api/, '') // 不可以省略rewrite
+    //     rewrite: (path) => path.replace(/^\/api/, ''),
+    //     ws:false
     //   }
-    // }
-  },
+    // },
+      }
+,
 
   plugins: [vue(),
 

@@ -30,24 +30,27 @@ export default {
     initAudio(e) {
       // 创建一个音乐播放器实例，并挂载到DOM上，同时进行相关配置
       const ap = new APlayer({
-        fixed: true,
         container: document.getElementById('player'),
+        fixed:true,
         listFolded: false,
-        listMaxHeight: 90,
+        listMaxHeight: 3,
         lrcType: 3,
         audio: this.music,
-        volume:0.4
+        volume:0.4,
+        mutex: true,
       });
     },
 
     async getMic(){
 
-      let{data}=await  this.$axios({
-        method:"GET",
+      let {data}=await this.$axios({
+        methods: "GET",
         url:"/get/music"
       })
       if(data.code)return
       this.music=data.data
+
+
     }
   },
   async created() {
@@ -65,11 +68,47 @@ export default {
 
 <style lang="scss" scoped>
 #audioPlayer {
-position: absolute;
-  z-index: 9999;
+  :deep(.aplayer.aplayer-fixed .aplayer-lrc){
+    display: block;
+    position: fixed;
+    /* bottom: 10px; */
+    top: 25px;
+    left: 0;
+    right: 0;
+    margin: 0;
+    z-index: 98;
+    pointer-events: none;
+    text-shadow: -1px -1px 0 #fff;
+  }
+  :deep(.aplayer .aplayer-lrc p.aplayer-lrc-current ){
+      /* 大小 */
+      font-size: 16px;
+      /* 颜色 */
+      color:  #8967FC;
+      opacity: 1;
+      overflow: visible;
+      height: auto !important;
+      min-height: 16px;
+  }
+  :deep(.aplayer .aplayer-lrc p) {
+    font-weight: 700;
+    font-size:13px;
+    color:#1b82f1;
+    line-height:16px!important;
+    height:16px!important;
+    padding:0!important;
+    margin:0 !important;
+    transition:all .5s ease-out;
+    opacity:.4;
+    overflow:hidden
+  }
+
   #player {
     width: 310px;
     // 定个宽度
+
   }
 }
+
+
 </style>

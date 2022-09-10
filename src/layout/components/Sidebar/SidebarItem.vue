@@ -31,4 +31,11 @@ const props = defineProps(['route'])
 span {
   margin-left: 10px;
 }
+.el-menu-item:hover{
+  outline: 0 !important;
+  color: #ffd04b !important;
+}
+.el-menu .el-menu-item.is-active{
+  background: #409EFF;
+}
 </style>

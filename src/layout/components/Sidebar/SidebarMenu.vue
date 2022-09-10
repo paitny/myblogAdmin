@@ -3,7 +3,7 @@
       :unique-opened=true
       router
       text-color="#ffff"
-      background-color="#304156"
+      background-color="#001529"
       active-text-color="#ffd04b"
       :default-active="activeMenu"
       :collapse="isCollapse"
@@ -32,4 +32,5 @@ const isCollapse=computed(()=>!store.getters.sidebarOpened)
 .el-menu {
   border-right: 0 !important;
 }
+
 </style>

@@ -93,6 +93,10 @@ checkAdmin().then(async ({data})=>{
     left: 0;
     background-color: $menuBg;
     transition: width #{$sideBarDuration};
+    overflow-y: auto;
+    &::-webkit-scrollbar { // 隐藏滚动条
+      display: none;
+    }
   }
 }
 .openSidebar {
@@ -100,6 +104,9 @@ checkAdmin().then(async ({data})=>{
   .sidebar-container {
     // 210px
     width: $sideBarWidth !important;
+  }
+  :deep(.el-menu--vertical){
+    margin-top: 82px !important;
   }
 }
 
@@ -114,6 +121,9 @@ checkAdmin().then(async ({data})=>{
   }
   .fixed-header {
     width: calc(100% - $hideSideBarWidth) !important;
+  }
+  :deep(.el-menu--vertical){
+    margin-top: 82px !important;
   }
 }
 </style>
