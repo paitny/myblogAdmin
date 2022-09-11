@@ -83,6 +83,7 @@
               type="danger"
               @click="deleteUser(scope.row._id)"
               size="large"
+              disabled
           >注销用户
           </el-button>
         </template>

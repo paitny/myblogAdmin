@@ -14,7 +14,7 @@ export default {
   data() {
     return {
       music: [ // 歌曲列表
-        {}
+
       ],
     }
   },
@@ -35,9 +35,8 @@ export default {
     },
     async getMic(){
      await getMusic().then(({data})=>{
-       this.music=data.data
        const baseURL = process.env.NODE_ENV === "development" ? '/api' : ''
-       this.music.forEach((item) => {
+       data.data.forEach((item) => {
          item.cover = baseURL + item.cover
          item.lrc=baseURL + item.lrc
          item.url=baseURL+ item.url

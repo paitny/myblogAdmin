@@ -64,7 +64,7 @@
               </el-image>
               <el-upload
                   class="upload-demo"
-                  :action="`/adminServer/music/cover`"
+                  :action="`${baseURL}/adminServer/music/cover`"
                   :on-success="function(res){cover_upload_success(res,scope.row._id)}"
                   :before-upload="cover_before_upload"
                   :limit="1"

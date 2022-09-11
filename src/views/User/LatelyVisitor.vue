@@ -46,7 +46,7 @@
           <div class="demo-image__preview" >
             <el-image
                 style="width: 150px; height:100px"
-                :src="`${baseURL}${scope.row.visitor.photo}`"
+                :src="[`${baseURL}${scope.row.visitor.photo}`]"
                 :preview-src-list="[`${baseURL}${scope.row.visitor.photo}`]"
                 :initial-index="4"
                 fit="cover"

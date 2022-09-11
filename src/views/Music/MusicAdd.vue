@@ -107,7 +107,7 @@ export default {
         lrc: "",
         url: "",
         cover: "",
-        theme: ""
+        theme: "#626aef"
       },
       imageUrl: "",
 
