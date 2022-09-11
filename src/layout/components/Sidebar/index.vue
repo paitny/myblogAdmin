@@ -2,7 +2,7 @@
   <div id="guide-sidebar">
     <!-- 头像区域 -->
     <div :class="open">
-        <el-avatar :size="44" :src="avatarSrc" shape="square"/>
+        <el-avatar :size="44" :src="`${baseURL}${avatarSrc}`" shape="square"/>
         <h1 class="logo-title" v-show="$store.getters.sidebarOpened">{{ $store.getters.userInfo.user }}</h1>
     </div>
     <SidebarMenu></SidebarMenu>

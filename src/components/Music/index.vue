@@ -6,6 +6,7 @@
 </template>
 
 <script itemscope>
+import {getMusic} from "../../api/getData";
 import APlayer from 'aplayer';
 import 'aplayer/dist/APlayer.min.css';
 export default {
@@ -13,15 +14,7 @@ export default {
   data() {
     return {
       music: [ // 歌曲列表
-        {
-          artist: "",
-          cover: "",
-          lrc: "",
-          name: "",
-          theme: "",
-          url: "",
-
-        },
+        {}
       ],
     }
   },
@@ -40,16 +33,17 @@ export default {
         mutex: true,
       });
     },
-
     async getMic(){
-
-      let {data}=await this.$axios({
-        methods: "GET",
-        url:"/get/music"
+     await getMusic().then(({data})=>{
+       this.music=data.data
+       const baseURL = process.env.NODE_ENV === "development" ? '/api' : ''
+       this.music.forEach((item) => {
+         item.cover = baseURL + item.cover
+         item.lrc=baseURL + item.lrc
+         item.url=baseURL+ item.url
+         this.music.push(item);
+       });
       })
-      if(data.code)return
-      this.music=data.data
-
 
     }
   },

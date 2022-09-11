@@ -18,7 +18,7 @@
           <div class="header">
             <img
               :src="
-                $store.getters.userInfo.photo || getImg('default.jpg')
+                $store.getters.userInfo.photo || `${baseURL}${getImg('default.jpg')}`
               "
               class="avatar"
             />

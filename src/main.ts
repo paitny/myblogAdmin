@@ -21,7 +21,7 @@ import Particles from 'particles.vue3';
 
 const  app=createApp(App)
 //服务器前缀设置
-const baseURL = process.env.NODE_ENV === "development" ? 'http://localhost:4000' : ''
+const baseURL = process.env.NODE_ENV === "development" ? '/api' : ''
 //配置全局axios
 axios.defaults.baseURL = baseURL //配置前缀url
 axios.defaults.withCredentials = true //携带cookie

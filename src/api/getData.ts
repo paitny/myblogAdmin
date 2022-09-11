@@ -5,3 +5,10 @@ export const getFeature = () => {
     url: '/get/feature'
   })
 }
+//获取音乐
+
+export const getMusic = () => {
+  return request({
+    url: '/get/music'
+  })
+}

@@ -7,7 +7,7 @@
       <div class="box-center">
         <img
           :src="
-            $store.getters.userInfo.photo || getImg('default.jpg')
+            `${baseURL}${$store.getters.userInfo.photo}`|| getImg('default.jpg')
           "
           class="avatar"
         />

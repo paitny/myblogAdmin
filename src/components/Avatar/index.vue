@@ -1,6 +1,6 @@
 <template>
   <el-dropdown>
-    <el-avatar :size="40"  shape="square" :src="avatarSrc" />
+    <el-avatar :size="40"  shape="square" :src="`${baseURL}${avatarSrc}`" />
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item @click="goHome">首页</el-dropdown-item>
