@@ -30,7 +30,7 @@ const open=computed(()=>store.getters.sidebarOpened ? "logo-open" : "logo-hide")
   z-index: 9999;
   background: $menuBg;
   width: $sideBarWidth;
-
+  transition: width #{$sideBarDuration};
   .logo-title {
     margin-left: 10px;
     color: #fff;
@@ -47,6 +47,7 @@ const open=computed(()=>store.getters.sidebarOpened ? "logo-open" : "logo-hide")
   width: $hideSideBarWidth;
   padding: 10px;
   z-index: 9999;
+  transition: margin-left, $sideBarDuration !important;
 }
 
 </style>

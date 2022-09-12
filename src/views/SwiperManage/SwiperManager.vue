@@ -6,7 +6,6 @@
     <el-table
         :data="MangerSwiper"
         border
-        style="width: 100%;height: 100%"
     >
       <el-table-column
           prop="date"
@@ -18,7 +17,7 @@
 
       </el-table-column>
       <el-table-column label="重新上传轮播图"
-                       width="1000"
+                       min-width="300"
                        align="center"
       >
         <template #default="scope">
@@ -61,11 +60,15 @@
       >
         <template #default="scope">
           <el-button
-              style="width: 200px;height: 100px;margin: 0 auto"
+              style="width: 50px;height: 50px"
               type="danger"
               @click="deleteSwiper(scope.row._id)"
               size="large"
-          >删除
+              circle
+          >
+            <el-icon>
+              <Delete/>
+            </el-icon>
           </el-button>
         </template>
       </el-table-column>
@@ -77,6 +80,7 @@
 <script>
 import moment from "moment";
 import Swiper from "../../components/Swiper/index.vue";
+
 export default {
   name: "SwiperManger",
   data() {
@@ -164,6 +168,7 @@ export default {
 .swiper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   :deep(.el-upload-dragger) {
     width: 360px;

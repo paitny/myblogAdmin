@@ -47,7 +47,7 @@
                 :with-credentials="true"
                 :show-file-list="false"
             >
-              <el-button size="large"  color="#626aef">更新音乐</el-button>
+              <el-button size="large" color="#626aef">更新音乐</el-button>
             </el-upload>
           </template>
         </el-table-column>
@@ -89,7 +89,9 @@
                 :with-credentials="true"
                 :show-file-list="false"
             >
-              <el-button size="large" color="#EC7BB0" circle><svg-icon icon="lrc" style="width: 50px;height: 50px"></svg-icon></el-button>
+              <el-button size="large" color="#EC7BB0" circle>
+                <svg-icon icon="lrc" style="width: 50px;height: 50px"></svg-icon>
+              </el-button>
             </el-upload>
           </template>
         </el-table-column>
@@ -105,15 +107,19 @@
                   type="primary"
                   @click="update(scope.row._id,{name:scope.row.name,artist:scope.row.artist,theme:scope.row.theme})"
               >
-                <el-icon><Edit /></el-icon>
+                <el-icon>
+                  <Edit/>
+                </el-icon>
               </el-button>
               <el-button
                   type="danger"
                   @click="deleteMusic(scope.row._id)"
                   circle
-              > <el-icon>
-                <Delete />
-              </el-icon></el-button>
+              >
+                <el-icon>
+                  <Delete/>
+                </el-icon>
+              </el-button>
             </div>
 
           </template>
@@ -270,7 +276,7 @@ export default {
   },
 
   created() {
-   this.getMusic()
+    this.getMusic()
   }
 }
 </script>

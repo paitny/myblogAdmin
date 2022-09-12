@@ -18,7 +18,7 @@
 
 import {useRoute} from "vue-router";
 import {useStore} from "vuex";
-import {watch,onBeforeMount} from "vue";
+import {watch} from "vue";
 const store=useStore()
 const route=useRoute()
 watch(route,(to,from)=>{

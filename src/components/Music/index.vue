@@ -26,7 +26,7 @@ export default {
         container: document.getElementById('player'),
         fixed:true,
         listFolded: false,
-        listMaxHeight: 3,
+        listMaxHeight:"160px",
         lrcType: 3,
         audio: this.music,
         volume:0.4,
@@ -61,6 +61,11 @@ export default {
 
 <style lang="scss" scoped>
 #audioPlayer {
+  :deep(.aplayer .aplayer-list ol){
+    &::-webkit-scrollbar { // 隐藏滚动条
+      display: none;
+    }
+  }
   :deep(.aplayer.aplayer-fixed .aplayer-lrc){
     display: block;
     position: fixed;
