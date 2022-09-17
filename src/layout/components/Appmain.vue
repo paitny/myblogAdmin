@@ -7,15 +7,13 @@
 
     <el-footer class="footer">
       <div style="text-align:center;margin:0 auto;width:100%;color: #5c6b77">
-        <a target="_blank" style="color: #5c6b77" href="https://wypty.com">蜀ICP备2021004767号</a>
-
+        <a target="_blank" style="color: #5c6b77;line-height: 60px" href="http://wypty.com">蜀ICP备2021004767号</a>
       </div>
     </el-footer>
   </div>
 
 </template>
 <script setup>
-
 import {useRoute} from "vue-router";
 import {useStore} from "vuex";
 import {watch} from "vue";

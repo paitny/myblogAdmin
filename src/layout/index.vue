@@ -3,23 +3,21 @@
   <Music></Music>
 
   <div class="app-wrapper" :class="open">
-
     <!-- 左侧menu -->
     <Sidebar class="sidebar-container"></Sidebar>
     <div class="main-container">
-
       <div class="fixed-header">
         <Navbar></Navbar>
         <TagsView></TagsView>
-
       </div>
       <!-- 主要内容区  -->
+
       <Appmain>
+
       </Appmain>
-
     </div>
-  </div>
 
+  </div>
 </template>
 <script setup>
 import Music from "../components/Music/index.vue";
@@ -32,13 +30,14 @@ import {computed, onBeforeMount} from "vue";
 import {checkAdmin} from "../api/login";
 import {ElMessage} from "element-plus";
 import {useRouter} from "vue-router";
-const router=useRouter()
-const store =useStore()
-const open=computed(()=>store.getters.sidebarOpened ? "openSidebar" : "hideSidebar")
+
+const router = useRouter()
+const store = useStore()
+const open = computed(() => store.getters.sidebarOpened ? "openSidebar" : "hideSidebar")
 
 
 // 向后端发请求，验证管理员权限
-checkAdmin().then(async ({data})=>{
+checkAdmin().then(async ({data}) => {
   if (data.code) {
     ElMessage({
       showClose: true,
@@ -46,7 +45,7 @@ checkAdmin().then(async ({data})=>{
       type: 'error',
       grouping: true,
     })
-  }else {
+  } else {
     ElMessage({
       showClose: true,
       message: '欢迎回来亲爱的工程师',
@@ -57,7 +56,6 @@ checkAdmin().then(async ({data})=>{
 })
 
 
-
 </script>
 <style lang="scss" scoped>
 .app-wrapper {
@@ -65,6 +63,7 @@ checkAdmin().then(async ({data})=>{
   position: relative;
   height: 100%;
   width: 100%;
+
   .main-container {
     height: 100%;
     transition: margin-left 0.28s;
@@ -73,6 +72,8 @@ checkAdmin().then(async ({data})=>{
     background-color: #f0f2f5;
 
     transition: margin-left, $sideBarDuration !important;
+    overflow-y: auto;
+
     .fixed-header {
       position: fixed;
       top: 0;
@@ -83,6 +84,7 @@ checkAdmin().then(async ({data})=>{
       transition: width #{$sideBarDuration};
     }
   }
+
   .sidebar-container {
     overflow: hidden;
     position: fixed;
@@ -94,18 +96,21 @@ checkAdmin().then(async ({data})=>{
     background-color: $menuBg;
     transition: width #{$sideBarDuration};
     overflow-y: auto;
+
     &::-webkit-scrollbar { // 隐藏滚动条
       display: none;
     }
   }
 }
+
 .openSidebar {
   // 展开时
   .sidebar-container {
     // 210px
     width: $sideBarWidth !important;
   }
-  :deep(.el-menu--vertical){
+
+  :deep(.el-menu--vertical) {
     margin-top: 82px !important;
   }
 }
@@ -116,13 +121,16 @@ checkAdmin().then(async ({data})=>{
     width: $hideSideBarWidth !important;
     // 54px
   }
+
   .main-container {
     margin-left: $hideSideBarWidth !important;
   }
+
   .fixed-header {
     width: calc(100% - $hideSideBarWidth) !important;
   }
-  :deep(.el-menu--vertical){
+
+  :deep(.el-menu--vertical) {
     margin-top: 82px !important;
   }
 }

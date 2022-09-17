@@ -32,13 +32,21 @@
           </template>
         </el-table-column>
 
-        <el-table-column label="操作">
+        <el-table-column label="操作" align="center">
           <template #default="{ row }">
-            <el-button size="small" type="primary" @click="openDetail(row)"
-              >查看详情</el-button
+            <el-button size="large" title="文章详情" color="#626aef" type="primary" @click="openDetail(row)"
+              >
+
+                <el-icon><Document /></el-icon>
+
+            </el-button
             >
-            <el-button size="small" type="danger" @click="deleteArticleFn(row)"
-              >删除</el-button
+            <el-button size="large" circle title="删除文章" type="danger" @click="deleteArticleFn(row)"
+              >
+              <el-icon>
+                <delete/>
+              </el-icon>
+            </el-button
             >
           </template>
         </el-table-column>

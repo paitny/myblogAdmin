@@ -79,7 +79,20 @@ const routes = [
             }
         ]
     },
-
+    {
+        path: "/",
+        component: () => import("../layout/index.vue"),
+        children: [
+            {
+                path: "/LeaveMg",
+                component: () => import("../views/leaveMg/index.vue"),
+                meta: {
+                    title: '留言管理',
+                    icon: "LeaveMg"
+                }
+            }
+        ]
+    },
     articleManage,
     linkMg,
     swiper,

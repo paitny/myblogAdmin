@@ -24,7 +24,7 @@
 <script setup>
 import {defineProps} from "vue";
 
-const props = defineProps(['route'])
+defineProps(['route'])
 </script>
 
 <style lang="scss" scoped>
