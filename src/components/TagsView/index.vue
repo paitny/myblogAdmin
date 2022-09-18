@@ -30,7 +30,7 @@
   </div>
 </template>
 <script setup>
-import { computed, ref, watch } from "vue";
+import {computed, ref, watch} from "vue";
 import { useStore } from "vuex";
 import { Close } from "@element-plus/icons-vue";
 import { useRoute } from "vue-router";

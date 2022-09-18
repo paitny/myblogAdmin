@@ -9,6 +9,6 @@ export const getFeature = () => {
 
 export const getMusic = () => {
   return request({
-    url: '/get/music'
+    url: '/get/musicAll'
   })
 }

@@ -1,4 +1,5 @@
 //获取回话存储
+
 export const getSession = (key:any,type:any) => {
 
 
@@ -33,4 +34,5 @@ export const setLocal = (key:any, item:any) => {
 export const removeAllItem=()=>{
     localStorage.clear()
     sessionStorage.clear()
+
 }

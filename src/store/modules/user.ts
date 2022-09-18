@@ -30,7 +30,7 @@ export default {
                         context.dispatch('route/getMenuRoute', null, {root: true})
                         //路由跳转
                         router.replace("/profile")
-
+                        window.location.reload();
                     } else {
                         ElMessage({
                             showClose: true,

@@ -120,6 +120,17 @@
         </el-table-column>
       </el-table>
     </div>
+    <el-pagination
+        background
+        layout="sizes,prev,pager,next,jumper,->,slot, total"
+        :total="total"
+        v-model:page-size="query.perPage"
+        v-model:current-page="query.page"
+        @current-change="getMusic"
+        @size-change="getMusic"
+        :page-sizes="[2,4,5,10,20,30]"
+
+    />
   </el-card>
 
 </template>
@@ -132,6 +143,13 @@ export default {
   data() {
     return {
       musicData: [],
+      total: 0,
+      display: true,
+      query:
+          {
+            page: 1,
+            perPage: 4
+          }
     }
   },
   methods: {
@@ -150,14 +168,18 @@ export default {
     async getMusic() {
       let {data} = await this.$axios({
         method: "get",
-        url: "/get/music"
+        url: "/get/music",
+        params: this.query
       })
 
       if (data.code) {
         return this.$message.error(data.msg)
       }
       this.musicData = data.data
-
+      this.total = data.total
+      if (this.total == 0) {
+        this.display = false
+      }
 
     },
     async lrcupdate(id, doc) {
