@@ -38,6 +38,14 @@ export default [
         }
     },
     {
+        element: '#guide-github',
+        popover: {
+            title: 'github',
+            description: '本站开源地址',
+            position: 'bottom-right'
+        }
+    },
+    {
         element: '#guide-tagsView',
         popover: {
             title: '标签',

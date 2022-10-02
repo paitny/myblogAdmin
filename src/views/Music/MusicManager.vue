@@ -1,7 +1,7 @@
 <template>
   <el-card>
-    <div id="ArticleManger">
 
+    <div id="ArticleManger">
       <el-table
           :data="musicData"
           border
@@ -41,7 +41,7 @@
             <el-upload
                 class="upload-demo"
                 :action="`${baseURL}/adminServer/music/musicAdd`"
-                :on-success="function(res){music_upload_success(res,scope.row._id)}"
+                :on-success="function(res){music_upload_success(res,scope.row._id,scope.row.url)}"
                 :before-upload="music_before_upload"
                 :limit="1"
                 :with-credentials="true"
@@ -65,7 +65,7 @@
               <el-upload
                   class="upload-demo"
                   :action="`${baseURL}/adminServer/music/cover`"
-                  :on-success="function(res){cover_upload_success(res,scope.row._id)}"
+                  :on-success="function(res){cover_upload_success(res,scope.row._id,scope.row.cover)}"
                   :before-upload="cover_before_upload"
                   :limit="1"
                   :with-credentials="true"
@@ -83,7 +83,7 @@
             <el-upload
                 class="upload-demo"
                 :action="`${baseURL}/adminServer/music/lrc`"
-                :on-success="function(res){lrc_upload_success(res,scope.row._id)}"
+                :on-success="function(res){lrc_upload_success(res,scope.row._id,scope.row.lrc)}"
                 :before-upload="lrc_before_upload"
                 :limit="1"
                 :with-credentials="true"
@@ -109,7 +109,7 @@
               </el-button>
               <el-button
                   type="danger"
-                  @click="deleteMusic(scope.row._id)"
+                  @click="deleteMusic(scope.row._id,scope.row.url,scope.row.cover,scope.row.lrc)"
                   circle
               > <el-icon>
                 <Delete />
@@ -182,20 +182,6 @@ export default {
       }
 
     },
-    async lrcupdate(id, doc) {
-      let {data} = await this.$axios({
-        method: "POST",
-        url: "/adminServer/music/lrcupdate",
-        data: {id, doc}
-      })
-
-      if (data.code) {
-        return this.$message.error(data.msg)
-      }
-      this.$message.success("更新成功")
-      await this.getMusic()
-    },
-
     //md上传之前的回调
     lrc_before_upload(file) {
       let ifMic = /\.lrc$/.test(file.name)
@@ -205,23 +191,24 @@ export default {
       return ifMic
     },
     //md上传成功后的回调
-    lrc_upload_success(res, id) {
+    lrc_upload_success(res, id,musicUrl) {
       //失败
       if (res.code) {
         return this.$message.error(res.msg)
       }
 
       //成功
-      this.lrcupdate(id, {lrc: res.url})
+      this.update(id, {lrc: res.url},musicUrl)
     },
 
 
     //更新文章
-    async update(id, doc) {
+    async update(id, doc,musicUrl) {
+      console.log(id, doc,musicUrl)
       let {data} = await this.$axios({
         method: "POST",
         url: "/adminServer/music/update",
-        data: {id, doc}
+        data: {id, doc,musicUrl}
       })
 
       if (data.code) {
@@ -240,14 +227,14 @@ export default {
       return ifMic
     },
     //md上传成功后的回调
-    music_upload_success(res, id) {
+    music_upload_success(res, id,musicUrl) {
       //失败
       if (res.code) {
         return this.$message.error(res.msg)
       }
 
       //成功
-      this.update(id, {url: res.url})
+      this.update(id, {url: res.url},musicUrl)
     },
 
     //封面图上传之前的回调
@@ -264,22 +251,22 @@ export default {
       return isJPG && isLt2M
     },
     //封面图上传成功后的回调
-    cover_upload_success(res, id) {
+    cover_upload_success(res, id,musicUrl) {
       //失败
       if (res.code) {
         return this.$message.error(res.msg)
       }
 
       //成功
-      this.update(id, {cover: res.url})
+      this.update(id, {cover: res.url},musicUrl)
     },
 
-    //删除文章
-    async deleteMusic(id) {
+    //删除音乐
+    async deleteMusic(id,mcUrl,mcCover,mcLrc) {
       let {data} = await this.$axios({
         method: "DELETE",
         url: "/adminServer/music/delete",
-        data: {id}
+        data: {id,mcUrl,mcCover,mcLrc}
       })
 
       if (data.code) {

@@ -30,12 +30,12 @@ export default {
         lrcType: 3,
         audio: this.music,
         volume:0.4,
-        mutex: true,
+        preload: 'auto',
       });
     },
     async getMic(){
      await getMusic().then(({data})=>{
-       const baseURL = process.env.NODE_ENV === "development" ? '/api' : ''
+       let baseURL = process.env.NODE_ENV === "development" ? '/api' : ''
        data.data.forEach((item) => {
          item.cover = baseURL + item.cover
          item.lrc=baseURL + item.lrc
@@ -49,13 +49,7 @@ export default {
   async created() {
     await this.getMic()
     this.initAudio();
-  },
-  mounted() {
-    // 初始化播放器
-
-
   }
-
 }
 </script>
 
@@ -74,7 +68,7 @@ export default {
     left: 0;
     right: 0;
     margin: 0;
-    z-index: 98;
+    z-index: 999;
     pointer-events: none;
     text-shadow: -1px -1px 0 #fff;
   }
@@ -101,10 +95,11 @@ export default {
     overflow:hidden
   }
 
+
   #player {
     width: 310px;
     // 定个宽度
-
+    z-index: 9999 !important;
   }
 }
 

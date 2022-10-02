@@ -30,7 +30,7 @@
             <el-upload
                 class="upload-demo"
                 :action="`${baseURL}/adminServer/article/md`"
-                :on-success="function(res){md_upload_success(res,scope.row._id)}"
+                :on-success="function(res){md_upload_success(res,scope.row._id,scope.row.md)}"
                 :before-upload="md_before_upload"
                 :limit="1"
                 :with-credentials="true"
@@ -53,8 +53,8 @@
               </el-image>
               <el-upload
                   class="upload-demo"
-                  :action="`/adminServer/article/cover`"
-                  :on-success="function(res){cover_upload_success(res,scope.row._id)}"
+                  :action="`${baseURL}/adminServer/article/cover`"
+                  :on-success="function(res){cover_upload_success(res,scope.row._id,scope.row.cover)}"
                   :before-upload="cover_before_upload"
                   :limit="1"
                   :with-credentials="true"
@@ -81,7 +81,7 @@
               </el-button>
               <el-button
                   type="danger"
-                  @click="deleteArticle(scope.row._id)"
+                  @click="deleteArticle(scope.row._id,scope.row.md,scope.row.cover)"
                   size="large"
               >删除
               </el-button>
@@ -167,11 +167,11 @@ export default {
     },
 
     //更新文章
-    async update(id, doc) {
+    async update(id, doc,mdUrl) {
       let {data} = await this.$axios({
         method: "POST",
         url: "/adminServer/article/update",
-        data: {id, doc}
+        data: {id, doc,mdUrl}
       })
 
       if (data.code) {
@@ -190,14 +190,14 @@ export default {
       return ifMd
     },
     //md上传成功后的回调
-    md_upload_success(res, id) {
+    md_upload_success(res, id,mdUrl) {
       //失败
       if (res.code) {
         return this.$message.error(res.msg)
       }
 
       //成功
-      this.update(id, {md: res.url})
+      this.update(id, {md: res.url},mdUrl)
     },
 
     //封面图上传之前的回调
@@ -214,22 +214,22 @@ export default {
       return isJPG && isLt2M
     },
     //封面图上传成功后的回调
-    cover_upload_success(res, id) {
+    cover_upload_success(res, id,mdUrl) {
       //失败
       if (res.code) {
         return this.$message.error(res.msg)
       }
 
       //成功
-      this.update(id, {cover: res.url})
+      this.update(id, {cover: res.url},mdUrl)
     },
 
     //删除文章
-    async deleteArticle(id) {
+    async deleteArticle(id,mdUrl,mdCover) {
       let {data} = await this.$axios({
         method: "DELETE",
         url: "/adminServer/article/delete",
-        data: {id}
+        data: {id,mdUrl,mdCover}
       })
 
       if (data.code) {

@@ -1,7 +1,8 @@
 <template>
   <el-card>
+
     <div class="swiperExhibition">
-      <Swiper></Swiper>
+      <Swiper :MangerSwiper="MangerSwiper"></Swiper>
     </div>
     <el-table
         :data="MangerSwiper"
@@ -37,7 +38,7 @@
                 :on-change="swiper_before_upload"
                 :limit="1"
                 ref="swiperForm"
-                :on-success="function(res){swiper_upload_success(res,scope.row._id)}"
+                :on-success="function(res){swiper_upload_success(res,scope.row._id,scope.row.swiper)}"
                 :with-credentials="true"
             >
               <i class="el-icon-upload">
@@ -62,7 +63,7 @@
           <el-button
               style="width: 50px;height: 50px"
               type="danger"
-              @click="deleteSwiper(scope.row._id)"
+              @click="deleteSwiper(scope.row._id,scope.row.swiper)"
               size="large"
               circle
           >
@@ -80,6 +81,7 @@
 <script>
 import moment from "moment";
 import Swiper from "../../components/Swiper/index.vue";
+
 
 export default {
   name: "SwiperManger",
@@ -109,11 +111,11 @@ export default {
       })
       this.MangerSwiper = data.data
     },
-    async swiperUpdate(id, doc) {
+    async swiperUpdate(id, doc,swUrl) {
       let {data} = await this.$axios({
         method: "POST",
         url: "/adminServer/swiper/update",
-        data: {id, doc}
+        data: {id, doc,swUrl}
       })
       if (data.code) {
         return this.$message.error(data.msg)
@@ -131,19 +133,19 @@ export default {
       }
     },
     //轮播图上传成功钩子
-    swiper_upload_success(res, id) {
+    swiper_upload_success(res, id,swUrl) {
       if (res.code) {
         return this.$message.error(res.msg)
       }
-      this.swiperUpdate(id, {swiper: res.url})
+      this.swiperUpdate(id, {swiper: res.url},swUrl)
     }
     ,
     //删除轮播图
-    async deleteSwiper(id) {
+    async deleteSwiper(id,swUrl) {
       let {data} = await this.$axios({
         method: "POST",
         url: "/adminServer/swiper/delete",
-        data: {id}
+        data: {id,swUrl}
       })
       if (data.code) {
         return this.$message.error(data.msg)

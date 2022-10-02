@@ -6,6 +6,7 @@
     <!-- 面包屑区域 -->
     <Breadcrumb></Breadcrumb>
 <div class="right-menu">
+  <div style="margin-right: 20px"><a href="https://github.com/paitny/myblogAdmin" target="_blank"><svg-icon icon="github" id="guide-github"></svg-icon></a></div>
   <HeaderSearch class="right-menu-item hover-effect"></HeaderSearch>
   <Guide class="right-menu-item hover-effect"></Guide>
   <Screenfull class="right-menu-item hover-effect"></Screenfull>

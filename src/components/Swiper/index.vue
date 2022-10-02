@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-carousel :height="bannerHeight+'px'" type="card">
-      <el-carousel-item v-for="item in urlList" :key="item.id">
+    <el-carousel :height="bannerHeight+'px'" type="card"  v-if="MangerSwiper[0]">
+      <el-carousel-item v-for="item in MangerSwiper" :key="item._id" >
         <div class="img" :style="{backgroundImage: `url(${baseURL}${item.swiper})`}" alt="正在加载中" >  </div>
       </el-carousel-item>
     </el-carousel>
@@ -9,38 +9,20 @@
 
 </template>
 <script>
+
 export default {
   name: 'swiper',
   data(){
     return {
-      urlList: [
-        {id:0},
-        {id:1},
-        {id:2},
-        {id:3},
-        {id:4},
-      ]
-      ,
       //el-carousel容器高度
       bannerHeight:0,
       screenWidth:0
     };
   },
-  methods: {
-   async getSwiper(){
-      let {data}=await this.$axios({
-        method:"GET",
-        url:"/get/swiper"
-      })
-     if(data.code){
-       return this.$message.error(data.msg)
-     }
-       this.urlList=data.data
-
-    }
-  },
+  //父级传递的数据
+  props:['MangerSwiper'],
   mounted () {
-    this.getSwiper()
+
     // 首次加载时,初始化高度
     this.screenWidth = window.innerWidth
     this.bannerHeight =350 / 2200 * this.screenWidth
@@ -72,8 +54,9 @@ export default {
   height: 8px;
   border: none;
   border-radius: 50%;
-  background-color: #00b7ff;
+  background-color: #7d50f4;
 }
+
 .el-carousel__item:nth-child(2n) {
   background-color: #99a9bf;
   border-radius: 10px;

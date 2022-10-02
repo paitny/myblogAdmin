@@ -82,9 +82,6 @@ const handleSubmit = () => {
 }
 
 
-
-
-
 </script>
 
 <style lang="scss" scoped>

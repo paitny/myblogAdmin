@@ -18,12 +18,12 @@
         @change="chooseOption"
         ref="headerSearchSelectRef"
     >
-<el-option
-v-for="option in searchOptions"
-:key="option.refIndex"
-:value="option.item"
-:label="option.item.titles.join('>')"
-></el-option>
+      <el-option
+          v-for="option in searchOptions"
+          :key="option.refIndex"
+          :value="option.item"
+          :label="option.item.titles.join('>')"
+      ></el-option>
     </el-select>
 
   </div>
@@ -34,12 +34,13 @@ import {ref, watch} from "vue";
 import getRoutePool from '@/assets/ts/handleData'
 import Fuse from 'fuse.js'
 import {useRouter} from "vue-router";
-const router=useRouter()
+
+const router = useRouter()
 const search = ref(null)
 const ifShow = ref(false)
 
 const searchOptions = ref([]);
-const headerSearchSelectRef=ref(null)
+const headerSearchSelectRef = ref(null)
 const onShowClick = () => {
   return ifShow.value = !ifShow.value
 
@@ -65,14 +66,14 @@ const chooseOption = (val) => {
   onClose()
   router.push(val.path);
 };
-const querySearch=(query)=>{
+const querySearch = (query) => {
 
-  searchOptions.value=fuse.search(query)
+  searchOptions.value = fuse.search(query)
 }
-const onClose=()=>{
-  ifShow.value=false
-  searchOptions.value=[]
-  search.value=null
+const onClose = () => {
+  ifShow.value = false
+  searchOptions.value = []
+  search.value = null
 }
 watch(ifShow, (newShow) => {
   if (newShow) {

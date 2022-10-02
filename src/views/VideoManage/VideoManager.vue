@@ -38,7 +38,7 @@
           <el-upload
               class="upload-demo"
               :action="`${baseURL}/adminServer/video/videoAdd`"
-              :on-success="function(res){video_upload_success(res,scope.row._id)}"
+              :on-success="function(res){video_upload_success(res,scope.row._id,scope.row.video)}"
               :before-upload="video_before_upload"
               :limit="1"
               :with-credentials="true"
@@ -69,13 +69,13 @@
             <el-upload
                 class="upload-demo"
                 :action="`${baseURL}/adminServer/video/videoCover`"
-                :on-success="function(res){videoCover_upload_success(res,scope.row._id)}"
+                :on-success="function(res){videoCover_upload_success(res,scope.row._id,scope.row.videoCover)}"
                 :before-upload="videoCover_before_upload"
                 :limit="1"
                 :with-credentials="true"
                 :show-file-list="false"
             >
-              <el-button size="large" type="warning" >重传封面</el-button>
+              <el-button size="large" type="warning">重传封面</el-button>
             </el-upload>
           </div>
 
@@ -103,7 +103,7 @@
           <div>
             <el-button
                 type="danger"
-                @click="deleteVideo(scope.row._id)"
+                @click="deleteVideo(scope.row._id,scope.row.video,scope.row.videoCover)"
                 size="large"
             >删除
             </el-button>
@@ -150,11 +150,11 @@ export default {
       this.MangerVideo = data.data
     },
     //更新视频
-    async update(id, doc) {
+    async update(id, doc,vdUrl) {
       let {data} = await this.$axios({
         method: "POST",
         url: "/adminServer/video/update",
-        data: {id, doc}
+        data: {id, doc,vdUrl}
 
       })
       if (data.code) {
@@ -172,13 +172,13 @@ export default {
       return ifVideo
     },
     //视频上传成功后的回调
-    video_upload_success(res, id) {
+    video_upload_success(res, id,vdUrl) {
       //失败
       if (res.code) {
         return this.$message.error(res.msg)
       }
       //成功
-      this.update(id, {video: res.url})
+      this.update(id, {video: res.url},vdUrl)
     },
 
     //封面图上传之前的回调
@@ -195,21 +195,21 @@ export default {
       return isJPG && isLt2M
     },
     //封面图上传成功后的回调
-    videoCover_upload_success(res, id) {
+    videoCover_upload_success(res, id,vdUrl) {
       //失败
       if (res.code) {
         return this.$message.error(res.msg)
       }
       //成功
-      this.update(id, {videoCover: res.url})
+      this.update(id, {videoCover: res.url},vdUrl)
     }
     ,
     //删除视频
-    async deleteVideo(id) {
+    async deleteVideo(id,videoUrl,coverUrl) {
       let {data} = await this.$axios({
         method: "DELETE",
         url: "/adminServer/video/delete",
-        data: {id}
+        data: {id,videoUrl,coverUrl}
       })
 
       if (data.code) {

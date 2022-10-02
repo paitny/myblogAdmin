@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import App from './App.vue'
 import router from "./router";
 import store from './store'
@@ -13,13 +13,14 @@ import installIcon from "./icons"
 import axios from "axios";
 
 // @ts-ignore
-import vue3videoPlay  from "vue3-video-play"
+import vue3videoPlay from "vue3-video-play"
 import 'vue3-video-play/dist/style.css' // 引入css
 
 
 import Particles from 'particles.vue3';
 
-const  app=createApp(App)
+
+const app = createApp(App)
 //服务器前缀设置
 const baseURL = process.env.NODE_ENV === "development" ? '/api' : ''
 //配置全局axios
