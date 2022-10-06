@@ -13,17 +13,16 @@ export default {
   name: "App",
   data() {
     return {
-      music: [ // 歌曲列表
-
-      ],
+      music: [],
     }
   },
   methods: {
 
-    initAudio(e) {
+    initAudio() {
       // 创建一个音乐播放器实例，并挂载到DOM上，同时进行相关配置
       const ap = new APlayer({
         container: document.getElementById('player'),
+        mutex:true,
         fixed:true,
         listFolded: false,
         listMaxHeight:"160px",
@@ -31,7 +30,10 @@ export default {
         audio: this.music,
         volume:0.4,
         preload: 'auto',
+        storageName:'aplayer-setting',
+        loop: 'all'
       });
+
     },
     async getMic(){
      await getMusic().then(({data})=>{

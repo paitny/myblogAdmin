@@ -76,7 +76,7 @@ import ArticleDetail from "./components/ArticleDetail.vue";
 import { formatTime } from "../../utils/formatTime";
 import { ElMessage } from "element-plus";
 
-// console.log(dynamicData);
+
 const queryParams = ref({
   pageSize: 10,
   currentPage: 1,

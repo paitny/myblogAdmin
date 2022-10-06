@@ -24,6 +24,20 @@ const routes = [
         ]
     },
     {
+        path: "/",
+        component: () => import("../layout/index.vue"),
+        children: [
+            {
+                path: "/data",
+                component: () => import("../views/Data/index.vue"),
+                meta: {
+                    title: '数据分析',
+                    icon: "data"
+                }
+            }
+        ]
+    },
+    {
         path: "/login",
         component: () => import("../views/login/index.vue")
     },

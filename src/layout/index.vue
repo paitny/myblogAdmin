@@ -1,6 +1,6 @@
 <!-- layout的根组件  -->
 <template>
-  <Music></Music>
+
 
   <div class="app-wrapper" :class="open">
     <!-- 左侧menu -->
@@ -16,11 +16,11 @@
 
       </Appmain>
     </div>
-
+    <Music></Music>
   </div>
 </template>
 <script setup>
-import Music from "../components/Music/index.vue";
+import Music from "../components/Vueaplayer/index.vue";
 import Sidebar from "./components/Sidebar/index.vue";
 import Appmain from "./components/Appmain.vue";
 import Navbar from "./components/Navbar.vue";

@@ -204,7 +204,6 @@ export default {
 
     //更新文章
     async update(id, doc,musicUrl) {
-      console.log(id, doc,musicUrl)
       let {data} = await this.$axios({
         method: "POST",
         url: "/adminServer/music/update",

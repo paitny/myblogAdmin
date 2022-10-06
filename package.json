@@ -10,6 +10,7 @@
     "npm": "npm install"
   },
   "dependencies": {
+    "@moefe/vue-aplayer": "^2.0.0-beta.5",
     "@toast-ui/editor": "^3.2.0",
     "axios": "^0.27.2",
     "element-plus": "^2.2.15",
@@ -19,6 +20,8 @@
     "npm": "^8.18.0",
     "sortablejs": "^1.15.0",
     "vue": "^3.2.37",
+    "vue-animate-number": "^0.4.2",
+    "vue-calendar-component": "^2.8.2",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
@@ -34,6 +37,7 @@
     "typescript": "^4.6.4",
     "vite": "^3.0.7",
     "vite-plugin-svg-icons": "^2.0.1",
+    "vue-count-to": "^1.0.13",
     "vue-particles": "^1.0.9",
     "vue-router": "^4.1.5",
     "vue-tsc": "^0.39.5",

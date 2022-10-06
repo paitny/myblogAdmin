@@ -49,7 +49,7 @@ export default {
      this.MsgData.forEach(({...item})=>{
        this.MsgDataChildren.push(...item.children)
      })
-      console.log(this.MsgDataChildren)
+
     },
 
   },

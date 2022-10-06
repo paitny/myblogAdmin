@@ -37,7 +37,6 @@ onMounted(async () => {
 
 const submitFn = () => {
   const htmlStr = mkEditor.getHTML();
-  // console.log(htmlStr);
   if (htmlStr === "<p><br></p>") {
     ElMessage.warning("content内容不能为空");
   } else {
