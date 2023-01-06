@@ -1,9 +1,8 @@
 <template>
-  <div class="login-container">
 
+  <div class="login-container">
     <router-view></router-view>
     <BackgroundParticles></BackgroundParticles>
-
     <el-form
         class="login-form"
         :model="loginForm"
@@ -31,11 +30,15 @@
       </el-form-item>
       <el-button type="primary" @click="handleSubmit">登录</el-button>
     </el-form>
+
+    <Bgvideo></Bgvideo>
   </div>
+
 </template>
 
 <script setup>
 import BackgroundParticles from "../../components/BackgroundParticles/index.vue";
+import Bgvideo from "../../components/Bgvideo/index.vue";
 import {validatePassword} from "./rules";
 import {computed, ref} from "vue";
 import {ElMessage} from 'element-plus'
@@ -93,8 +96,6 @@ $cursor: #fff;
   min-height: 100%;
   width: 100%;
   height: 100%;
-  background:url("../../assets/img/admin.png") no-repeat;
-  background-size: cover;
   overflow: hidden;
   user-select: none;
   .login-form {
@@ -174,6 +175,8 @@ $cursor: #fff;
     user-select: none;
   }
 }
+
+
 </style>
 
 

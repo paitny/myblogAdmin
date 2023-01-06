@@ -3,6 +3,7 @@
 
 
   <div class="app-wrapper" :class="open">
+    <Lantern></Lantern>
     <!-- 左侧menu -->
     <Sidebar class="sidebar-container"></Sidebar>
     <div class="main-container">
@@ -25,6 +26,7 @@ import Sidebar from "./components/Sidebar/index.vue";
 import Appmain from "./components/Appmain.vue";
 import Navbar from "./components/Navbar.vue";
 import TagsView from "../components/TagsView/index.vue";
+import Lantern from "../components/Lantern/index.vue";
 import {useStore} from "vuex";
 import {computed} from "vue";
 import {checkAdmin} from "../api/login";
